@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class='row'>
+  <div class='col-md-3'>
+    <p>
+     <%= image_tag(@record.album_art_url) %>
+    </p>
+  </div>
+  <div class='col-md-8'>
+    <p>
+      <strong>Title:</strong>
+      <%= @record.title %>
+    </p>
+
+    <p>
+      <strong>Artist:</strong>
+      <%= @record.artist %>
+    </p>
+
+    <p>
+      <strong>Year:</strong>
+      <%= @record.year %>
+    </p>
+
+    <p>
+      <strong>Label:</strong>
+      <%= @record.label %>
+    </p>
+
+    <p>
+      <strong>Genre:</strong>
+      <%= @record.genre %>
+    </p>
+
+    <p>
+      <strong>Discs:</strong>
+      <%= @record.discs %>
+    </p>
+
+    <p>
+      <strong>Tracks:</strong>
+      <%= @record.tracks %>
+    </p>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>
