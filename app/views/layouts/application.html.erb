@@ -19,7 +19,8 @@
     <ul class='nav navbar-nav navbar-right'>
       <% if user_signed_in? %>
         <li>Signed in as <%= current_user.email %></li>
-        <li><a href='/users/sign_out'>Log Out</a></li>
+        <li><a href='/users/sign_out'>LogOut</a></li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
         <li><a href='/users/edit'>Edit Account</a></li>
       <% else %>
         <li><a href='/users/sign_in'>Login</a></li>
