@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<div id='all'>
+
+  <nav class='navbar navbar-default' role='navigation'>
+  <div class='container-fluid'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='/'>Record Keeper</a>
+    </div>
+
+    <ul class='nav navbar-nav navbar-right'>
+      <% if user_signed_in? %>
+        <li>Signed in as <%= current_user.email %></li>
+        <li><a href='/users/sign_out'>Log Out</a></li>
+        <li><a href='/users/edit'>Edit Account</a></li>
+      <% else %>
+        <li><a href='/users/sign_in'>Login</a></li>
+      <% end %>
+    </ul>
+  </div>
+  </nav>
+</div>
 <%= yield %>
 
 </body>
