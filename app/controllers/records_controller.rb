@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @records = Record.all
@@ -42,6 +42,6 @@ class RecordsController < ApplicationController
     end
 
     def record_params
-      params.require(:record).permit(:title, :artist, :year, :label, :genre, :discs, :tracks)
+      params.require(:record).permit(:title, :artist, :year, :label, :genre, :discs, :tracks, :album_art_url)
     end
 end

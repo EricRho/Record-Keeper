@@ -1,3 +1,21 @@
 // Place all the styles related to the Records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  color: green;
+}
+
+img.album_url {
+  max-width: 100px;
+}
+
+.records {
+  table {
+    border-collapse: collapse;
+  }
+  table tr td {
+    padding: 5px;
+    vertical-align: top;
+  }
+}
