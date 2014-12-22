@@ -3,7 +3,16 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'home#index'
+  authenticated :user do
+    root :to => "records#index"
+  end
+
+  unauthenticated :user do
+    devise_scope :user do
+      get "/" => "home#index"
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
