@@ -3,13 +3,23 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  authenticated :user do
-    root :to => "records#index"
-  end
+  # authenticated :user do
+  #   root :to => "records#index"
+  # end
+
+  # unauthenticated :user do
+  #   devise_scope :user do
+  #     get "/" => "home#index"
+  #   end
+  # end
 
   unauthenticated :user do
+    root :to => "home#index"
+  end
+
+  authenticated :user do
     devise_scope :user do
-      get "/" => "home#index"
+      get "/" => "records#index"
     end
   end
 
