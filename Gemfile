@@ -32,6 +32,15 @@ gem 'devise'
 # Use Bootstrap
 gem 'bootstrap-sass'
 
+# Use Discogs to access records and user account
+gem 'discogs-wrapper'
+
+gem 'pry-rails'
+
+# Discogs Omniauth
+gem 'omniauth-oauth'
+gem 'omniauth-discogs'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
