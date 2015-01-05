@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :records
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   # authenticated :user do
   #   root :to => "records#index"

@@ -3,10 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#home {
-  border: solid black;
-  border-radius: 12px;
-  position: absolute; top:30%; height:150px; margin-top:40px;
+  // border: solid black;
+  // position: absolute; top:30%; height:150px; margin-top:40px;
   text-align: center;
+  background-image: url("white.jpg");
+  height: 500px;
+
+}
+
+h1#welcome-title {
+  color: white;
+  margin-top: 0px;
+  padding-top: 120px;
+  font-family: 'Poiret One', cursive;
 }
 
 // div#image {
