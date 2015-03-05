@@ -37,9 +37,10 @@ gem 'discogs-wrapper'
 
 gem 'pry-rails'
 
+# Twitter Omniauth
+gem 'omniauth-twitter'
 # Discogs Omniauth
-gem 'omniauth-oauth'
-gem 'omniauth-discogs'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

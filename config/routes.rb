@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
   resources :records
 
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
+
+  # devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-
-  # authenticated :user do
-  #   root :to => "records#index"
-  # end
-
-  # unauthenticated :user do
-  #   devise_scope :user do
-  #     get "/" => "home#index"
-  #   end
-  # end
 
   unauthenticated :user do
     root :to => "home#index"
