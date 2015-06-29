@@ -10,9 +10,45 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # session['devise.twitter_data'] = env['omniauth.auth'].except('extra')
       redirect_to new_user_registration_url
     end
+  end
 
+  def discogs
+    @cogs = Discogs::Wrapper.new("Record Keeper", session[:access_token])
+
+    def self.authenticate
+      app_key = "vVqZWXDJOLmvpvMCoQly"
+      app_secret = "KNnWkTvicsySetHQDMYRZXYfehAZlNGS"
+      request_data = @discogs.self_from_discogs_omniauth(app_key, app_secret, "http://127.0.0.1:3000/callback")
+
+      session[:request_token] = request_data[:request_token]
+
+      redirect_to request_data[:authorize_url]
+    end
+
+    def self.callback
+      request_token = session[:request_token]
+      verifier = params[:oauth_verifier]
+      access_token = @cogs.authenticate(request_token, verifier)
+
+      session[:request_token] = nil
+      session[:access_token] = access_token
+
+      redirect_to new_user_session_path
+    end
+    # @user = User.from_discogs_omniauth(request_token, verifer)
+
+    # request_token = session[:request_token]
+    # verifier = params[:oauth_verifier]
+    # access_token = @user.from_discogs_omniauth(request_token, verifier)
+
+    # session[:request_token] = nil
+    # session[:access_token] = access_token
+
+    # redirect_to :action => 'records#index'
 
   end
+
+  private
 
   def auth_hash
     request.env['omniauth.auth']

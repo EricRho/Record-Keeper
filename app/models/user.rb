@@ -27,4 +27,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.from_discogs_omniauth(auth)
+    @cogs = Discogs::Wrapper.new("Record Keeper")
+    request_data = @cogs.get_request_token("vVqZWXDJOLmvpvMCoQly", "KNnWkTvicsySetHQDMYRZXYfehAZlNGS", "http://127.0.0.1:3000/callback")
+
+    session[:request_token] = request_data[:request_token]
+    # redirect_to request_data[:authorize_url]
+  end
+
 end
