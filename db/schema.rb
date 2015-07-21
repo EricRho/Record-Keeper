@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112215220) do
+ActiveRecord::Schema.define(version: 20150721181459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "my_collections", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "my_records", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "records", force: true do |t|
     t.string   "title"
@@ -27,7 +37,16 @@ ActiveRecord::Schema.define(version: 20150112215220) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "album_art_url"
+    t.integer  "user_id"
   end
+
+  create_table "user_records", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "user_records", ["user_id"], name: "index_user_records_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

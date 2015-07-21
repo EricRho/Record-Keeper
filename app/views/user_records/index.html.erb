@@ -1,0 +1,33 @@
+<h1>My User Records</h1>
+
+<%= link_to 'Add Record', new_user_record_path %>
+
+<table id='user_recordTable' class='table table-striped'>
+  <thead>
+    <tr class='clickable'>
+    <th>Album Art</th>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>Year</th>
+    <th>Label</th>
+    <th>Genre</th>
+    <th>Discs</th>
+    <th>Tracks</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_records.each do |record| %>
+      <tr>
+        <td id='image'><%= image_tag(record.album_art_url, class: 'album_url') %></td>
+        <td><%= link_to "#{record.title}", record %></td>
+        <td><%= record.artist %></td>
+        <td><%= record.year %></td>
+        <td><%= record.label %></td>
+        <td><%= record.genre %></td>
+        <td><%= record.discs %></td>
+        <td><%= record.tracks %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

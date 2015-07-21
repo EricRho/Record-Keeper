@@ -4,7 +4,7 @@ class RecordsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @records = Record.all
+    @records = current_user.records.all
     respond_with(@records)
   end
 
@@ -13,17 +13,24 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new
-    respond_with(@record)
+    # @record = Record.new
+    # respond_with(@record)
+    @record = current_user.records.create
   end
 
   def edit
   end
 
   def create
+    # @record = Record.new(record_params)
+    # @record.save
+    # respond_with(@record)
     @record = Record.new(record_params)
-    @record.save
-    respond_with(@record)
+    if @record.save
+      redirect_to @record
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -31,17 +38,19 @@ class RecordsController < ApplicationController
     respond_with(@record)
   end
 
+
   def destroy
     @record.destroy
     respond_with(@record)
   end
 
   private
-    def set_record
-      @record = Record.find(params[:id])
-    end
 
-    def record_params
-      params.require(:record).permit(:title, :artist, :year, :label, :genre, :discs, :tracks, :album_art_url)
-    end
+  def set_record
+    @record = Record.find(params[:id])
+  end
+
+  def record_params
+    params.require(:record).permit(:title, :artist, :year, :label, :genre, :discs, :tracks, :album_art_url, :user_id)
+  end
 end
